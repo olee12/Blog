@@ -10,14 +10,16 @@ class PostsController extends Controller
     //
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at','dest')->get();
+        //$posts = Post::latest()->get();
 
     	return view('posts.index',compact('posts'));
     }
 
-    public function show()
+    public function show(Post $post)
     {
-        return view('posts.show');
+       // $post = Post::find($id);
+        return view('posts.show',compact('post'));
     }
     public function create()
     {
