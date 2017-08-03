@@ -8,7 +8,10 @@
     <p class="blog-post-meta">
 
         {{$post->created_at->toDayDateTimeString()}}
-
     </p>
     {{$post->body}}
+
+
+
+
 </div><!-- /.blog-post -->
