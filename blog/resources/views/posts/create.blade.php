@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+
     <div class="col-sm-8 blog-main">
         <h1>Create a Post.</h1>
 
@@ -18,11 +19,14 @@
             </div>
 
 
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Publish</button>
+            </div>
 
-            <button type="submit" class="btn btn-primary">Publish</button>
 
 
         </form>
 
+        @include('layouts.errors')
     </div>
 @endsection

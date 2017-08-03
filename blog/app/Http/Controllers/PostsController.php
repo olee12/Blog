@@ -10,7 +10,9 @@ class PostsController extends Controller
     //
     public function index()
     {
-    	return view('posts.index');
+        $posts = Post::all();
+
+    	return view('posts.index',compact('posts'));
     }
 
     public function show()
@@ -34,6 +36,13 @@ class PostsController extends Controller
         //$post->body = request('body');
         //$post->save();
         //Post::create(request()->all());
+
+        $this->validate(request(),[
+            'title' => 'required',
+            'body' =>'required'
+
+        ]);
+
         Post::create(request(['title','body']));
         return redirect('/');
     }
