@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
+use App\User;
 
 
 class PostsController extends Controller
@@ -50,8 +51,11 @@ class PostsController extends Controller
             'body' =>'required'
 
         ]);
+      //  echo auth()->id();+
 
-        Post::create(request(['title','body']));
+        auth()->user()->publish(new Post(request(['title','body'])));
+
+
         return redirect('/');
     }
 }
