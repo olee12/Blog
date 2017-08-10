@@ -10,7 +10,6 @@ class RegistrationController extends Controller
     public function create()
     {
         return view('registration.create');
-
     }
     public function store()
     {
@@ -19,7 +18,12 @@ class RegistrationController extends Controller
             'email' => 'required',
             'password' => 'required|confirmed'
         ]);
-        $user = User::create(request(['name','email','password']));
+       // $user = User::create(request(['name','email','password']));
+        $user = User::create([
+            'name' => request('name'),
+            'email' => request('email'),
+            'password' => bcrypt(request('password'))
+        ]);
         auth()->login($user);
         return redirect()->home();
 
